@@ -463,52 +463,48 @@ footer p{
   }
 
   /* =========================
-   WHATSAPP FLOATING BUTTON
+   WHATSAPP FLOAT BUTTON
 ========================= */
 
-.whatsapp-float {
-    position: fixed;
+.whatsapp-float{
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
     width: 65px;
     height: 65px;
-    bottom: 25px;
-    right: 25px;
     background: #25D366;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
+    display: flex !important;
     align-items: center;
+    justify-content: center;
+    z-index: 999999;
     box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    z-index: 9999;
-    transition: 0.3s ease;
+    text-decoration: none;
     animation: pulse 2s infinite;
+    transition: 0.3s ease;
 }
 
-.whatsapp-float img {
+.whatsapp-float img{
     width: 34px;
     height: 34px;
 }
 
-.whatsapp-float:hover {
+.whatsapp-float:hover{
     transform: scale(1.1);
-    background: #1ebe5d;
 }
 
-/* Pulse Animation */
+/* Pulse Effect */
 
-@keyframes pulse {
-    0% {
+@keyframes pulse{
+    0%{
         box-shadow: 0 0 0 0 rgba(37,211,102,0.7);
     }
 
-    70% {
+    70%{
         box-shadow: 0 0 0 18px rgba(37,211,102,0);
     }
 
-    100% {
+    100%{
         box-shadow: 0 0 0 0 rgba(37,211,102,0);
     }
 }
-
-
-}
-
