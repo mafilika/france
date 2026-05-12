@@ -531,3 +531,17 @@ footer p{
     height: 32px !important;
     object-fit: contain;
 }
+  .whatsapp-float{
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 60px !important;
+    height: 60px !important;
+    background: #25D366 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+  }
