@@ -456,14 +456,29 @@
 
   <!-- JAVASCRIPT -->
   <script src="script.js"></script>
-  <a href="https://wa.me/27682766504"
-   class="whatsapp-float"
-   target="_blank">
+  /* WhatsApp Floating Button */
 
-   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-        alt="WhatsApp">
+.whatsapp-float{
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 60px !important;
+    height: 60px !important;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
 
-  </a>
+.whatsapp-float img{
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain;
+}
 
   
 </body>
