@@ -462,21 +462,23 @@ footer p{
     text-align:center;
   }
 
-  /* =========================
-   WHATSAPP FLOAT BUTTON
-========================= */
+  /* FIXED WHATSAPP BUTTON */
 
-  .whatsapp-float{
-    position: right !important;
-    bottom: 20px !important;
+#whatsapp-button{
+    position: fixed !important;
     right: 20px !important;
-    width: 60px !important;
-    height: 60px !important;
-    background: #25D366 !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    z-index: 999999 !important;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
-  }
+    bottom: 20px !important;
+    z-index: 999999999 !important;
+}
+
+#whatsapp-button a{
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
