@@ -452,7 +452,35 @@
 
   </footer>
 
+<script>
+window.addEventListener("load", function () {
 
+    const whatsapp = document.createElement("a");
+
+    whatsapp.href = "https://wa.me/27682766504";
+    whatsapp.target = "_blank";
+    whatsapp.innerHTML = "💬";
+
+    whatsapp.style.position = "fixed";
+    whatsapp.style.bottom = "20px";
+    whatsapp.style.right = "20px";
+    whatsapp.style.width = "60px";
+    whatsapp.style.height = "60px";
+    whatsapp.style.background = "#25D366";
+    whatsapp.style.color = "white";
+    whatsapp.style.borderRadius = "50%";
+    whatsapp.style.display = "flex";
+    whatsapp.style.alignItems = "center";
+    whatsapp.style.justifyContent = "center";
+    whatsapp.style.fontSize = "30px";
+    whatsapp.style.textDecoration = "none";
+    whatsapp.style.zIndex = "999999999";
+    whatsapp.style.boxShadow = "0 5px 20px rgba(0,0,0,0.3)";
+
+    document.body.appendChild(whatsapp);
+
+});
+</script>
 
   <!-- JAVASCRIPT -->
   <script src="script.js"></script>
