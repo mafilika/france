@@ -488,7 +488,7 @@ window.addEventListener("load", function () {
   
   <div id="whatsapp-button">
 
-<a href="https://wa.me/27682766504" target="_blank">
+<a href="https://wa.me/62768276504" target="_blank">
 
 <svg xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 32 32"
@@ -502,5 +502,226 @@ fill="white">
 
 </a>
   </div> 
+
+<style>
+#chatbot-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #0a2540;
+  color: #fff;
+  padding: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#chatbot-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 340px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: none;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+#chatbot-header {
+  background: #0a2540;
+  color: #fff;
+  padding: 14px;
+  font-weight: bold;
+}
+
+#chatbot-body {
+  padding: 15px;
+  font-size: 14px;
+  min-height: 120px;
+}
+
+.typing {
+  font-style: italic;
+  color: #888;
+}
+
+.chat-option {
+  display: block;
+  background: #f1f1f1;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.chat-option:hover {
+  background: #0a2540;
+  color: #fff;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+</style>
+
+<div id="chatbot-btn">👷🏽‍♂️</div>
+
+<div id="chatbot-box">
+  <div id="chatbot-header"> Online Assistant</div>
+  <div id="chatbot-body"></div>
+</div>
+
+<script>
+const phone = "27682766504";
+
+let userData = {
+  name: "",
+  area: "",
+  service: ""
+};
+
+document.getElementById("chatbot-btn").onclick = () => {
+  const box = document.getElementById("chatbot-box");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+  startChat();
+};
+
+function typing(message, callback) {
+  const body = document.getElementById("chatbot-body");
+  body.innerHTML = "<p class='typing'>Typing...</p>";
+  
+  setTimeout(() => {
+    body.innerHTML = "<p>" + message + "</p>";
+    if (callback) callback();
+  }, 1200);
+}
+
+function startChat() {
+  typing("Hi 👋 Looking for Property Protection or VIP Protection(Escorting) ?", () => {
+    document.getElementById("chatbot-body").innerHTML += `
+      <div class="chat-option" onclick="selectService('Tactical Protection')">Property Protection</div>
+      <div class="chat-option" onclick="selectService('VIP Protection')">Escorting</div>
+    `;
+  });
+}
+
+function selectService(service) {
+  userData.service = service;
+  
+  typing("Great choice 👍 What's your name?", () => {
+    document.getElementById("chatbot-body").innerHTML += `
+      <input type="text" id="nameInput" placeholder="Enter your name">
+      <div class="chat-option" onclick="saveName()">Continue</div>
+    `;
+  });
+}
+
+function saveName() {
+  const name = document.getElementById("nameInput").value;
+  if (!name) return alert("Please enter your name");
+  
+  userData.name = name;
+
+  typing("Nice to meet you " + name + " 👋 Which area are you based in?", () => {
+    document.getElementById("chatbot-body").innerHTML += `
+      <input type="text" id="areaInput" placeholder="Your area">
+      <div class="chat-option" onclick="saveArea()">Continue</div>
+    `;
+  });
+}
+
+function saveArea() {
+  const area = document.getElementById("areaInput").value;
+  if (!area) return alert("Please enter your area");
+
+  userData.area = area;
+
+  typing(
+    "Good News! Based on Your Area, You are Much closer to our offices and Now France is available to assit you with your Consultation.\n\n\n ",
+    () => {
+      document.getElementById("chatbot-body").innerHTML += `
+        <div class="chat-option" onclick="goWhatsApp()">Secure My Slot</div>
+      `;
+    }
+  );
+}
+
+function goWhatsApp() {
+  let message = encodeURIComponent(
+    "Hi, my name is " + userData.name +
+    ". I'm in " + userData.area +
+    ". I want a " + userData.service +
+    ". I want to secure one my consultation."
+  );
+
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+}
+
+    let hasOpened = false;
+
+// AUTO POPUP AFTER 4 SECONDS
+setTimeout(() => {
+  if (!hasOpened) {
+    openChatbot();
+  }
+}, 4000);
+
+// OPEN FUNCTION
+function openChatbot() {
+  const box = document.getElementById("chatbot-box");
+  box.style.display = "block";
+  hasOpened = true;
+
+  interruptMessage();
+}
+
+// SHAKE EFFECT
+function shakeButton() {
+  const btn = document.getElementById("chatbot-btn");
+  btn.style.transition = "0.1s";
+  
+  let i = 0;
+  let interval = setInterval(() => {
+    btn.style.transform = `translateX(${i % 2 === 0 ? 5 : -5}px)`;
+    i++;
+    if (i > 6) {
+      clearInterval(interval);
+      btn.style.transform = "translateX(0)";
+    }
+  }, 100);
+}
+
+// INTERRUPT MESSAGE (HIGH CONVERSION)
+function interruptMessage() {
+  const body = document.getElementById("chatbot-body");
+
+  body.innerHTML = `
+    <p><b>⚠️ Before you leave...</b></p>
+
+    <p>We currently have <b>ONLY 2 consultation slots</b> available this week .</p>
+
+    <p style="color:red;"><b>Guarantee:</b> WE PROVIDE HIGH TACTICAL SECURITY SERVICE AT THE PROMISE THAT WE ALWAYS KEEP.</p>
+
+    <p></p>
+
+    <p>Do you want to secure your slot now?</p>
+
+    <div class="chat-option" onclick="startChat()">Yes, show me options</div>
+    <div class="chat-option" onclick="closeChat()">No, I’ll come back later</div>
+  `;
+}
+
+// CLOSE CHAT
+function closeChat() {
+  document.getElementById("chatbot-box").style.display = "none";
+}
+
+</script>
 </body>
 </html>
