@@ -503,223 +503,351 @@ fill="white">
 </a>
   </div> 
 
+<!-- PREMIUM SECURITY LEAD MAGNET CHATBOT -->
+
 <style>
-#chatbot-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #0a2540;
-  color: #fff;
-  padding: 16px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 999;
+
+#securityBotBtn{
+position:fixed;
+bottom:25px;
+left:25px;
+width:70px;
+height:70px;
+background:#0a1f44;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+cursor:pointer;
+z-index:999999;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+animation:securityPulse 2s infinite;
 }
 
-#chatbot-box {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 340px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  display: none;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+@keyframes securityPulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
 }
 
-#chatbot-header {
-  background: #0a2540;
-  color: #fff;
-  padding: 14px;
-  font-weight: bold;
+.alertDot{
+position:absolute;
+top:8px;
+right:8px;
+width:14px;
+height:14px;
+background:#ff0000;
+border-radius:50%;
+animation:blink 1s infinite;
 }
 
-#chatbot-body {
-  padding: 15px;
-  font-size: 14px;
-  min-height: 120px;
+@keyframes blink{
+50%{opacity:.3;}
 }
 
-.typing {
-  font-style: italic;
-  color: #888;
+#securityBot{
+position:fixed;
+bottom:110px;
+left:20px;
+width:360px;
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+display:none;
+z-index:999999;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+font-family:Montserrat,sans-serif;
 }
 
-.chat-option {
-  display: block;
-  background: #f1f1f1;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
+.botHeader{
+background:#0a1f44;
+color:white;
+padding:16px;
+font-weight:700;
+font-size:17px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.chat-option:hover {
-  background: #0a2540;
-  color: #fff;
+.botBody{
+padding:18px;
+font-size:14px;
+line-height:1.6;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.botTitle{
+font-size:20px;
+font-weight:800;
+margin-bottom:10px;
+color:#0a1f44;
 }
+
+.botOption{
+background:#f4f4f4;
+padding:12px;
+border-radius:8px;
+margin-top:10px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.botOption:hover{
+background:#0a1f44;
+color:white;
+}
+
+.botInput{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+.closeBot{
+cursor:pointer;
+font-size:20px;
+}
+
+@media(max-width:480px){
+
+#securityBot{
+width:95%;
+left:2.5%;
+}
+
+}
+
 </style>
 
-<div id="chatbot-btn">👷🏽‍♂️</div>
+<div id="securityBotBtn">
+<div class="alertDot"></div>
+🛡️
+</div>
 
-<div id="chatbot-box">
-  <div id="chatbot-header"> Online Assistant</div>
-  <div id="chatbot-body"></div>
+<div id="securityBot">
+
+<div class="botHeader">
+Security Consultant
+<span class="closeBot" onclick="closeSecurityBot()">✕</span>
+</div>
+
+<div class="botBody" id="botContent">
+</div>
+
 </div>
 
 <script>
-const phone = "27682766504";
 
-let userData = {
-  name: "",
-  area: "",
-  service: ""
+const whatsappNumber="27682766504";
+
+let lead={
+name:"",
+area:"",
+service:"",
+urgency:""
 };
 
-document.getElementById("chatbot-btn").onclick = () => {
-  const box = document.getElementById("chatbot-box");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-  startChat();
+const bot=document.getElementById("securityBot");
+const content=document.getElementById("botContent");
+
+document.getElementById("securityBotBtn").onclick=()=>{
+bot.style.display="block";
+startSecurityChat();
 };
 
-function typing(message, callback) {
-  const body = document.getElementById("chatbot-body");
-  body.innerHTML = "<p class='typing'>Typing...</p>";
-  
-  setTimeout(() => {
-    body.innerHTML = "<p>" + message + "</p>";
-    if (callback) callback();
-  }, 1200);
+setTimeout(()=>{
+bot.style.display="block";
+startSecurityChat();
+},4000);
+
+function startSecurityChat(){
+
+content.innerHTML=`
+
+<div class="botTitle">
+⚠ FREE Security Risk Assessment
+</div>
+
+<p>
+Most businesses only discover security weaknesses after:
+</p>
+
+<ul>
+<li>Equipment Theft</li>
+<li>Unauthorized Access</li>
+<li>Vandalism</li>
+<li>Costly Security Incidents</li>
+</ul>
+
+<p>
+Would you like a FREE Security Risk Assessment?
+</p>
+
+<div class="botOption" onclick="chooseProperty()">
+YES • Check My Security Risk
+</div>
+
+<div class="botOption" onclick="closeSecurityBot()">
+No Thanks
+</div>
+
+`;
+
 }
 
-function startChat() {
-  typing("Hi 👋 Looking for Property Protection or VIP Protection(Escorting) ?", () => {
-    document.getElementById("chatbot-body").innerHTML += `
-      <div class="chat-option" onclick="selectService('Tactical Protection')">Property Protection</div>
-      <div class="chat-option" onclick="selectService('VIP Protection')">Escorting</div>
-    `;
-  });
+function chooseProperty(){
+
+content.innerHTML=`
+
+<div class="botTitle">
+What needs protection?
+</div>
+
+<div class="botOption" onclick="saveService('Business Premises')">
+🏢 Business Premises
+</div>
+
+<div class="botOption" onclick="saveService('Construction Site')">
+🚧 Construction Site
+</div>
+
+<div class="botOption" onclick="saveService('VIP Protection')">
+👤 VIP Protection
+</div>
+
+<div class="botOption" onclick="saveService('Private Property')">
+🏠 Private Property
+</div>
+
+<div class="botOption" onclick="saveService('Event Security')">
+🎪 Event Security
+</div>
+
+`;
+
 }
 
-function selectService(service) {
-  userData.service = service;
-  
-  typing("Great choice 👍 What's your name?", () => {
-    document.getElementById("chatbot-body").innerHTML += `
-      <input type="text" id="nameInput" placeholder="Enter your name">
-      <div class="chat-option" onclick="saveName()">Continue</div>
-    `;
-  });
+function saveService(service){
+
+lead.service=service;
+
+content.innerHTML=`
+
+<div class="botTitle">
+Who should we prepare the assessment for?
+</div>
+
+<input
+class="botInput"
+id="leadName"
+placeholder="Enter your name">
+
+<div class="botOption" onclick="saveName()">
+Continue
+</div>
+
+`;
+
 }
 
-function saveName() {
-  const name = document.getElementById("nameInput").value;
-  if (!name) return alert("Please enter your name");
-  
-  userData.name = name;
+function saveName(){
 
-  typing("Nice to meet you " + name + " 👋 Which area are you based in?", () => {
-    document.getElementById("chatbot-body").innerHTML += `
-      <input type="text" id="areaInput" placeholder="Your area">
-      <div class="chat-option" onclick="saveArea()">Continue</div>
-    `;
-  });
+lead.name=document.getElementById("leadName").value;
+
+content.innerHTML=`
+
+<div class="botTitle">
+Where is the property located?
+</div>
+
+<input
+class="botInput"
+id="leadArea"
+placeholder="Area / City">
+
+<div class="botOption" onclick="saveArea()">
+Continue
+</div>
+
+`;
+
 }
 
-function saveArea() {
-  const area = document.getElementById("areaInput").value;
-  if (!area) return alert("Please enter your area");
+function saveArea(){
 
-  userData.area = area;
+lead.area=document.getElementById("leadArea").value;
 
-  typing(
-    "Good News! Based on Your Area, You are Much closer to our offices and Now France is available to assit you with your Consultation.\n\n\n ",
-    () => {
-      document.getElementById("chatbot-body").innerHTML += `
-        <div class="chat-option" onclick="goWhatsApp()">Secure My Slot</div>
-      `;
-    }
-  );
+content.innerHTML=`
+
+<div class="botTitle">
+How soon do you need protection?
+</div>
+
+<div class="botOption" onclick="saveUrgency('Immediately')">
+🚨 Immediately
+</div>
+
+<div class="botOption" onclick="saveUrgency('This Week')">
+📅 This Week
+</div>
+
+<div class="botOption" onclick="saveUrgency('This Month')">
+📆 This Month
+</div>
+
+`;
+
 }
 
-function goWhatsApp() {
-  let message = encodeURIComponent(
-    "Hi, my name is " + userData.name +
-    ". I'm in " + userData.area +
-    ". I want a " + userData.service +
-    ". I want to secure one my consultation."
-  );
+function saveUrgency(time){
 
-  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+lead.urgency=time;
+
+content.innerHTML=`
+
+<div class="botTitle">
+Assessment Ready
+</div>
+
+<p>
+Based on your answers, one of our Tactical Security Consultants can provide a FREE Security Risk Assessment and recommend the most suitable protection solution.
+</p>
+
+<div class="botOption" onclick="sendToWhatsApp()">
+📲 Get My Free Assessment
+</div>
+
+`;
+
 }
 
-    let hasOpened = false;
+function sendToWhatsApp(){
 
-// AUTO POPUP AFTER 4 SECONDS
-setTimeout(() => {
-  if (!hasOpened) {
-    openChatbot();
-  }
-}, 4000);
+let msg=encodeURIComponent(
 
-// OPEN FUNCTION
-function openChatbot() {
-  const box = document.getElementById("chatbot-box");
-  box.style.display = "block";
-  hasOpened = true;
+"SECURITY RISK ASSESSMENT REQUEST\n\n"+
+"Name: "+lead.name+"\n"+
+"Area: "+lead.area+"\n"+
+"Protection Needed: "+lead.service+"\n"+
+"Urgency: "+lead.urgency+"\n\n"+
+"I would like a FREE Security Risk Assessment."
 
-  interruptMessage();
+);
+
+window.open(
+"https://wa.me/"27682766504?text="+msg,
+"_blank"
+);
+
 }
 
-// SHAKE EFFECT
-function shakeButton() {
-  const btn = document.getElementById("chatbot-btn");
-  btn.style.transition = "0.1s";
-  
-  let i = 0;
-  let interval = setInterval(() => {
-    btn.style.transform = `translateX(${i % 2 === 0 ? 5 : -5}px)`;
-    i++;
-    if (i > 6) {
-      clearInterval(interval);
-      btn.style.transform = "translateX(0)";
-    }
-  }, 100);
-}
-
-// INTERRUPT MESSAGE (HIGH CONVERSION)
-function interruptMessage() {
-  const body = document.getElementById("chatbot-body");
-
-  body.innerHTML = `
-    <p><b>⚠️ Before you leave...</b></p>
-
-    <p>We currently have <b>ONLY 2 consultation slots</b> available this week .</p>
-
-    <p style="color:red;"><b>Guarantee:</b> WE PROVIDE HIGH TACTICAL SECURITY SERVICE AT THE PROMISE THAT WE ALWAYS KEEP.</p>
-
-    <p></p>
-
-    <p>Do you want to secure your slot now?</p>
-
-    <div class="chat-option" onclick="startChat()">Yes, show me options</div>
-    <div class="chat-option" onclick="closeChat()">No, I’ll come back later</div>
-  `;
-}
-
-// CLOSE CHAT
-function closeChat() {
-  document.getElementById("chatbot-box").style.display = "none";
+function closeSecurityBot(){
+bot.style.display="none";
 }
 
 </script>
