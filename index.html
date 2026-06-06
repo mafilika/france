@@ -487,145 +487,96 @@ window.addEventListener("load", function () {
 
   
 
-<!-- PREMIUM SECURITY LEAD MAGNET CHATBOT -->
-
 <style>
-
-#securityBotBtn{
+#securityPopup{
 position:fixed;
-bottom:25px;
-left:25px;
-width:70px;
-height:70px;
-background:#0a1f44;
-color:#fff;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-cursor:pointer;
-z-index:999999;
-box-shadow:0 10px 25px rgba(0,0,0,.35);
-animation:securityPulse 2s infinite;
-}
-
-@keyframes securityPulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
-}
-
-.alertDot{
-position:absolute;
-top:8px;
-right:8px;
-width:14px;
-height:14px;
-background:#ff0000;
-border-radius:50%;
-animation:blink 1s infinite;
-}
-
-@keyframes blink{
-50%{opacity:.3;}
-}
-
-#securityBot{
-position:fixed;
-bottom:110px;
-left:20px;
-width:360px;
-background:#fff;
+bottom:20px;
+right:20px;
+width:380px;
+background:#0a2540;
+color:white;
 border-radius:15px;
-overflow:hidden;
-display:none;
+padding:20px;
 z-index:999999;
-box-shadow:0 20px 50px rgba(0,0,0,.25);
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+display:none;
 font-family:Montserrat,sans-serif;
+animation:slideIn .6s ease;
 }
 
-.botHeader{
-background:#0a1f44;
-color:white;
-padding:16px;
-font-weight:700;
-font-size:17px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+@keyframes slideIn{
+from{
+transform:translateY(100px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
 }
 
-.botBody{
-padding:18px;
-font-size:14px;
-line-height:1.6;
-}
-
-.botTitle{
-font-size:20px;
-font-weight:800;
+#securityPopup h3{
 margin-bottom:10px;
-color:#0a1f44;
+color:#f5c542;
 }
 
-.botOption{
-background:#f4f4f4;
-padding:12px;
+.popupBtn{
+display:block;
+margin-top:15px;
+background:#f5c542;
+color:#000;
+text-align:center;
+padding:14px;
 border-radius:8px;
-margin-top:10px;
+font-weight:700;
 cursor:pointer;
-font-weight:600;
-transition:.3s;
+text-decoration:none;
 }
 
-.botOption:hover{
-background:#0a1f44;
-color:white;
-}
-
-.botInput{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:1px solid #ddd;
-border-radius:8px;
-}
-
-.closeBot{
+.closePopup{
+position:absolute;
+top:10px;
+right:15px;
 cursor:pointer;
 font-size:20px;
 }
-
-@media(max-width:480px){
-
-#securityBot{
-width:95%;
-left:2.5%;
-}
-
-}
-
 </style>
 
-<div id="securityBotBtn">
-<div class="alertDot"></div>
-🛡️
-</div>
+<div id="securityPopup">
 
-<div id="securityBot">
+<span class="closePopup"
+onclick="document.getElementById('securityPopup').style.display='none'">
+✕
+</span>
 
-<div class="botHeader">
-Security Consultant
-<span class="closeBot" onclick="closeSecurityBot()">✕</span>
-</div>
+<h3>⚠ Free Security Risk Assessment</h3>
 
-<div class="botBody" id="botContent">
-</div>
+<p>
+Most theft incidents happen because vulnerabilities were identified too late.
+</p>
+
+<p>
+Get a FREE security assessment for your property, construction site, VIP protection requirement, or business premises.
+</p>
+
+<a class="popupBtn"
+href="https://wa.me/27682766504?text=I%20want%20a%20FREE%20Security%20Risk%20Assessment"
+target="_blank">
+
+CLAIM FREE ASSESSMENT
+
+</a>
 
 </div>
 
 <script>
+
+setTimeout(function(){
+
+document.getElementById('securityPopup').style.display='block';
+
+},3000);
+
 
 const whatsappNumber="27682766504";
 
