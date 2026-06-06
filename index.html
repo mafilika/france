@@ -484,5 +484,247 @@ window.addEventListener("load", function () {
 
   <!-- JAVASCRIPT -->
   <script src="script.js"></script>
+
+<!-- SECURITY LEAD BOT --><style>
+
+#security-lead-bot{
+position:fixed;
+right:25px;
+bottom:100px;
+width:370px;
+background:#172235;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 50px rgba(0,0,0,.5);
+z-index:999999998;
+font-family:'Montserrat',sans-serif;
+display:none;
+animation:botSlide .5s ease;
+}
+
+@keyframes botSlide{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.bot-header{
+background:linear-gradient(135deg,#d90429,#003566);
+padding:15px;
+color:#fff;
+font-weight:700;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.bot-close{
+cursor:pointer;
+font-size:22px;
+}
+
+.bot-body{
+padding:20px;
+color:#fff;
+}
+
+.bot-title{
+font-size:22px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.bot-btn{
+background:#d90429;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
+text-align:center;
+cursor:pointer;
+font-weight:700;
+}
+
+.bot-btn:hover{
+opacity:.9;
+}
+
+.bot-input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+background:#0b1220;
+color:white;
+}
+
+@media(max-width:600px){
+
+#security-lead-bot{
+width:95%;
+right:2.5%;
+bottom:90px;
+}
+
+}
+
+</style><div id="security-lead-bot"><div class="bot-header"><span>🛡 Tactical Security Consultant</span>
+
+<span class="bot-close" onclick="closeLeadBot()">✕</span>
+
+</div><div class="bot-body" id="leadBotContent"></div></div><script>
+
+let leadData={
+service:"",
+name:"",
+area:""
+};
+
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+document.getElementById("security-lead-bot").style.display="block";
+
+showStep1();
+
+},2000);
+
+});
+
+function showStep1(){
+
+document.getElementById("leadBotContent").innerHTML=`
+
+<div class="bot-title">
+⚠ Free Security Assessment
+</div>
+
+<p>
+Most businesses only discover security vulnerabilities after theft or unauthorized access.
+</p>
+
+<p>
+Would you like a FREE security assessment?
+</p>
+
+<div class="bot-btn" onclick="showServices()">
+YES • CHECK MY RISK
+</div>
+
+`;
+
+}
+
+function showServices(){
+
+document.getElementById("leadBotContent").innerHTML=`
+
+<div class="bot-title">
+What needs protection?
+</div>
+
+<div class="bot-btn" onclick="saveService('Construction Site')">
+🚧 Construction Site
+</div>
+
+<div class="bot-btn" onclick="saveService('Business Premises')">
+🏢 Business Premises
+</div>
+
+<div class="bot-btn" onclick="saveService('VIP Protection')">
+👤 VIP Protection
+</div>
+
+<div class="bot-btn" onclick="saveService('Event Security')">
+🎪 Event Security
+</div>
+
+`;
+
+}
+
+function saveService(service){
+
+leadData.service=service;
+
+document.getElementById("leadBotContent").innerHTML=`
+
+<div class="bot-title">
+Your Name
+</div>
+
+<input id="leadName"
+class="bot-input"
+placeholder="Enter your name">
+
+<div class="bot-btn" onclick="saveName()">
+CONTINUE
+</div>
+
+`;
+
+}
+
+function saveName(){
+
+leadData.name=
+document.getElementById("leadName").value;
+
+document.getElementById("leadBotContent").innerHTML=`
+
+<div class="bot-title">
+Your Area
+</div>
+
+<input id="leadArea"
+class="bot-input"
+placeholder="Johannesburg, Free State, North West">
+
+<div class="bot-btn" onclick="finishLead()">
+GET MY ASSESSMENT
+</div>
+
+`;
+
+}
+
+function finishLead(){
+
+leadData.area=
+document.getElementById("leadArea").value;
+
+const message=encodeURIComponent(
+
+"FREE SECURITY ASSESSMENT REQUEST\n\n"+
+"Name: "+leadData.name+"\n"+
+"Area: "+leadData.area+"\n"+
+"Service Needed: "+leadData.service+"\n\n"+
+"I would like a FREE Security Assessment."
+
+);
+
+window.open(
+
+"https://wa.me/27682766504?text="+message,
+
+"_blank"
+
+);
+
+}
+
+function closeLeadBot(){
+
+document.getElementById("security-lead-bot").style.display="none";
+
+}
+
+</script>
 </body>
 </html>
